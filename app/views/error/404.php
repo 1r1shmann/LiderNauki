@@ -1,8 +1,10 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<div class="row">
+    <div class="col s12 m2 "><h1 class="center-align" >404</h1></div>
+    <div class="col s12 m10">
+        <p><h5>Запрашиваемая страница не найдена!</h5></p>
+        <p>
+            Возможно, эта страница была удалена или вы воспользовались недействительной ссылкой.
+            Для продолжения работы с сайтом воспользуйтесь основным меню или перейдите на <a href="/">главную страницу</a>.
+        </p>
+    </div>
+</div>

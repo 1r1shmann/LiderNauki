@@ -1,35 +1,38 @@
-﻿<?php
-ini_set('display_errors', 1);
+<?php
 
-require 'vendor/autoload.php';
+    ini_set('display_errors', 1);
+    require 'vendor/autoload.php';
 
-$controller_name = 'General';
-$action_name = 'index';
+    $controller_name = 'General';
+    $action_name = 'Index';
+    define('ROOT', dirname(__FILE__));
 
-$routes = explode('/', $_SERVER['REQUEST_URI']);
+    $url = $_GET['url'];
+    $url = rtrim($url, '/');
+    $url = explode('/', $url);
 
-// получаем имя контроллера
-if (!empty($routes[1])) {
-    $controller_name = $routes[1];
-}
 
-// получаем имя экшена
-if (!empty($routes[2])) {
-    $action_name = $routes[2];
-}
+    $controller_name = $url[0] ? $url[0] : $controller_name;
+    $controller_name = 'App\Controllers\\' . $controller_name;
 
-// добавляем префиксы
-$controller_name = 'App\Controllers\\'.$controller_name ;
-$action_name = 'action' . $action_name;
+    $action_name = $url[1] ? $url[1] : $action_name;
+    $action = 'action' . $action_name;
+    $id = $url[2] ? $url[2] : NULL;
+    if (class_exists($controller_name)) {
+        $controller = new $controller_name;
+        if (method_exists($controller, $action)) {
 
-// создаем контроллер
-$controller = new $controller_name;
-$action = $action_name;
-
-if (method_exists($controller, $action)) {
-    // вызываем действие контроллера
-    $controller->$action();
-} else {
-    /**/
-}
+            if ($id) {
+                $controller->$action($id);
+            } else {
+                $controller->$action();
+            }
+        } else {
+            $error = new App\Controllers\Error();
+            $error->action404();
+        }
+    } else {
+        $error = new App\Controllers\Error();
+        $error->action404();
+    }
 

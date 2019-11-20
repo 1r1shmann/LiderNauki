@@ -4,38 +4,49 @@ namespace App\Core;
 
 class Controller {
 
-    public $model;
-    public $view;
+    public $config;
 
     // действие (action), вызываемое по умолчанию
-    function actionIndex() {
-        // todo	
+    public function __construct() {
+        $this->config = new \App\Core\Config();
     }
 
     //render
-    function render($content_view, $data = null, $template_view = 'default.php') {
-
-        if (!mb_stripos($content_view, '/')) {
-            
+    public function render($view, $data = [], $template = 'default') {
+        if (mb_strpos($view, '/')) {
+            $view = 'app/views/' . $view . '.php';
+        } else {
+            $view = 'app/views/' . mb_strtolower($this->getClassName()) . '/' . $view . '.php';
         }
-
-
-        if (is_array($data)) {
-
-            // преобразуем элементы массива в переменные
+        if ($data) {
             extract($data);
         }
-
-        include 'app/views/templates/' . $template_view;
+        if ($template !== 'default') {
+            include 'app/views/templates/' . $template . '.php';
+        } else {
+            include 'app/views/templates/default.php';
+        }
     }
 
-    function renderPartial($content_view, $data = null) {
-        include $content_view;
+    public function renderPartial($view, $data = [], $template = 'default') {
+        if (mb_strpos($view, '/')) {
+            $view = 'app/views/' . $view . '.php';
+        } else {
+            $view = 'app/views/' . $this->getClassName() . '/' . $view . '.php';
+        }
+        if ($data) {
+            extract($data);
+        }
+        include $view;
     }
 
-    function getClassName($class) {
-        $class = is_object($class) ? get_class($class) : $class;
-        return basename(str_replace('\\', '/', $class));
+    public function getClassName() {
+        $rf = new \ReflectionClass($this);
+        return $rf->getShortName();
     }
 
+    public function createUrl($url) {
+        return '//' . $_SERVER['HTTP_HOST'] . '/' . $url;
+    }
+    
 }

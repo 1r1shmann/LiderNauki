@@ -6,11 +6,11 @@ use App\Core\Controller;
 
 class General extends Controller {
 
-    function actionIndex() {
-        $this->render('main_view.php');
+    public function actionIndex() {
+        $this->render('index');
     }
     
-    function actionLanding(){
+    public function actionLanding(){
 //        $this->render();
     }
 }

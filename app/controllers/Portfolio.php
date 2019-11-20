@@ -6,13 +6,13 @@ use App\Core\Controller;
 
 class Portfolio extends Controller {
 
-    function __construct() {
+    public function __construct() {
         $this->model = new \App\Models\Portfolio();
     }
 
-    function actionIndex() {
+    public function actionIndex() {
         $data = $this->model->get_data();
-        $this->render('portfolio_view.php', $data);
+        $this->render('index', $data);
     }
 
 }

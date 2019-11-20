@@ -17,7 +17,7 @@
         
         <link rel="shortcut icon" type="image/x-icon" href="css/favicon.png">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/materialize.min.css') ?>"  media="screen,projection"/>
     </head>
     <body>
 
@@ -42,7 +42,7 @@
             </div>
         </nav>
         <div class="container">
-            <?php include 'app/views/' . $content_view; ?>
+            <?php include $view; ?>
         </div>
         <footer class="page-footer blue darken-3">
             <div class="container">
@@ -58,10 +58,10 @@
                     <div class="col l4 s12">
                         <div class="row">
                             <div class="col s6">
-                                <a class="grey-text text-lighten-3" href="http://ugatu.su"><img width="70%" src="images/partners/ugatu.png"/></a>
+                                <a class="grey-text text-lighten-3" href="http://ugatu.su"><img width="70%" src="<?= $this->createUrl('images/partners/ugatu.png') ?>"/></a>
                             </div>	
                             <div class="col s6">
-                                <a class="grey-text text-lighten-3" href="#"><img width="100%" src="images/partners/svvosmi.jpg"/></a>
+                                <a class="grey-text text-lighten-3" href="#"><img width="100%" src="<?= $this->createUrl('images/partners/svvosmi.jpg') ?>"/></a>
                             </div>				
                         </div>
                     </div>
@@ -73,8 +73,8 @@
                 </div>
             </div>
         </footer>
-        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="<?= $this->createUrl('js/jquery-3.4.1.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->createUrl('js/materialize.min.js') ?>"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 M.AutoInit();

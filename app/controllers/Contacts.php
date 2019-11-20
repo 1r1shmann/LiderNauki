@@ -6,8 +6,8 @@ use App\Core\Controller;
 
 class Contacts extends Controller {
 
-    function actionIndex() {
-        $this->render('contacts_view.php');
+    public function actionIndex() {
+        $this->render('index');
     }
 
 }

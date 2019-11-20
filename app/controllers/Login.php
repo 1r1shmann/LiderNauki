@@ -6,7 +6,7 @@ use App\Core\Controller;
 
 class Login extends Controller {
 
-    function actionIndex() {
+    public function actionIndex() {
         //$data["login_status"] = "";
 
         if (isset($_POST['login']) && isset($_POST['password'])) {
@@ -22,9 +22,8 @@ class Login extends Controller {
                 $data["login_status"] = "access_granted";
 
                 session_start();
-                echo $_SESSION['admin'];
                 $_SESSION['admin'] = $password;
-                header('Location:/admin/');
+                header('Location:/admin');
             } else {
                 $data["login_status"] = "access_denied";
             }
@@ -32,7 +31,7 @@ class Login extends Controller {
             $data["login_status"] = "";
         }
 
-        $this->render('login_view.php', $data);
+        $this->render('index', $data);
     }
 
 }
