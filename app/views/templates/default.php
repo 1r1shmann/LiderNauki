@@ -15,9 +15,10 @@
         <meta name="theme-color" content="#336699">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
-        <link rel="shortcut icon" type="image/x-icon" href="css/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="<?= $this->createUrl('images/favicon.png') ?>">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/materialize.min.css') ?>"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/style.css') ?>"  media="screen,projection"/>
     </head>
     <body>
 
@@ -41,9 +42,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="container">
             <?php include $view; ?>
-        </div>
         <footer class="page-footer blue darken-3">
             <div class="container">
                 <div class="row">

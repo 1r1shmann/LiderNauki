@@ -6,8 +6,9 @@ use App\Core\Controller;
 
 class Test extends Controller {
 
-    public function actionIndex() {
-        $this->render('index');
+    public function actionIndex($id = null) {
+        var_dump($id);
+//        $this->render('index');
     }
 
 }
