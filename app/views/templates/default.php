@@ -1,83 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <title>Ассоциация "Лидер науки"</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="Robots" content="all"> 
-        <meta name="yandex" content="all">
-        <meta name="googlebot" content="all">
-        <meta name="Revisit-After" content="1 Days">
-        <meta name="description" content="Ассоциация лидер науки проводит дистанционные образовательные конкурсы, и международные интернет олимпиады для дошкольников и школьников начальных, средних и старших классов, студентов ВУЗов и СПО а также для преподавателей любых учебных заведений. Массовые соревнования для детей в возрасте от 3 лет и взрослых.">
-        <meta name="keywords" content="конкурсы для детей начальной средней и старшей школы, интернет онлайн олимпиады для школьников дошкольников, студентов и преподавателей, 2015, 2016, 2017 международные интеллектуальные конкурсы для школьников студентов преподавателей, лидер, науки, ассоциация, викторины, курсы, конкурсы, олимпиады, курсы для студентов и преподавателей, ">
-        <meta property="og:title" content="Дистанционные конкурсы олимпиады курсы, международные интернет олимпиады для дошкольников и школьников начальных, средних и старших классов, студентов ВУЗов и СПО а также для преподавателей любых учебных заведений. Массовые соревнования для детей в возрасте от 3 лет и взрослых">
-        <meta property="og:type" content="website">
-        <meta property="og:description" content="Ассоциация лидер науки проводит дистанционные образовательные конкурсы, и международные интернет олимпиады для дошкольников и школьников начальных, средних и старших классов, студентов ВУЗов и СПО а также для преподавателей любых учебных заведений. Массовые соревнования для детей в возрасте от 3 лет и взрослых.">
-        <meta name="theme-color" content="#336699">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
-        <link rel="shortcut icon" type="image/x-icon" href="<?= $this->createUrl('images/favicon.png') ?>">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/materialize.min.css') ?>"  media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/style.css') ?>"  media="screen,projection"/>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/bootstrap.min.css') ?>"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/bootstrap-grid.css') ?>"  media="screen,projection"/>
+
+        <title>Hello, world!</title>
     </head>
     <body>
+        <!--<nav class="navbar navbar-dark bg-primary">-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <nav>
-            <div class="nav-wrapper blue darken-3 ">
-                <div class="container">
-                    <!--<a href="#!" class="brand-logo">ОЛОЛОША TEAM</a>-->
-                    <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="/services">Услуги</a></li>
-                        <li><a href="/portfolio">Портфолио</a></li>
-                        <li><a href="/contacts">Контакты</a></li>
-                    </ul>
-                </div>
-                <ul class="sidenav" id="mobile">
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/services">Услуги</a></li>
-                    <li><a href="/portfolio">Портфолио</a></li>
-                    <li><a href="/contacts">Контакты</a></li>
-                </ul>
-            </div>
-        </nav>
-            <?php include $view; ?>
-        <footer class="page-footer blue darken-3">
-            <div class="container">
-                <div class="row">
-                    <div id="contacts" class="col l4 s12">
-                        <h5 class="white-text">Контакты</h5>
-                        <ul>
-                            <li class="white-text">E-mail: <a class="grey-text text-lighten-3" href="mailto:Support@lidernaiuki.ru">Support@lidernauki.ru</a></li>
-                            <li class="white-text">Телефон: +7 (917) 449-40-97</li>
-                        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/services">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/portfolio">Портфолио</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contacts">Контакты</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+        <?php include $view; ?>
 
-                    </div>
-                    <div class="col l4 s12">
-                        <div class="row">
-                            <div class="col s6">
-                                <a class="grey-text text-lighten-3" href="http://ugatu.su"><img width="70%" src="<?= $this->createUrl('images/partners/ugatu.png') ?>"/></a>
-                            </div>	
-                            <div class="col s6">
-                                <a class="grey-text text-lighten-3" href="#"><img width="100%" src="<?= $this->createUrl('images/partners/svvosmi.jpg') ?>"/></a>
-                            </div>				
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    &copy; 2015 - 2019 Ассоциация "Лидер науки"
-                </div>
-            </div>
-        </footer>
-        <script type="text/javascript" src="<?= $this->createUrl('js/jquery-3.4.1.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= $this->createUrl('js/materialize.min.js') ?>"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                M.AutoInit();
-            });
-        </script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script type="text/javascript" src="<?= $this->createUrl('js/jquery-3.3.1.slim.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->createUrl('js/popper.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->createUrl('js/bootstrap.min.js') ?>"></script>
     </body>
 </html>
