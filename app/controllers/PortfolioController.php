@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 
-class Portfolio extends Controller {
+class PortfolioController extends Controller {
 
     public function __construct() {
         $this->model = new \App\Models\Portfolio();

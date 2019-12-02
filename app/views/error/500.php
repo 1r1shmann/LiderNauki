@@ -1,3 +1,6 @@
+<?php
+    $str_title = '500 Internal Server Error';
+?>
 <div class="row">
     <div class="col s12 m2 "><h1 class="center-align" >500</h1></div>
     <div class="col s12 m10">

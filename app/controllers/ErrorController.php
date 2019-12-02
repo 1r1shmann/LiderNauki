@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 
-class Error extends Controller {
+class ErrorController extends Controller {
 
     public function action404() {
         $this->render('404');
