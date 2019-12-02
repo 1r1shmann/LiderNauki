@@ -2,29 +2,34 @@
 
 namespace App\Core;
 
+use App\Components\Helper;
+
 class Controller {
 
     public $config;
+    public $layout = 'default';
 
-    // действие (action), вызываемое по умолчанию
     public function __construct() {
-        $this->config = new \App\Core\Config();
+        $this->config = new Config();
     }
 
-    //render
-    public function render($view, $data = [], $template = 'default') {
+    public function render($view, $data = []) {
         if (mb_strpos($view, '/')) {
-            $view = 'app/views/' . $view . '.php';
+            $view_path = 'app/views/' . $view . '.php';
         } else {
-            $view = 'app/views/' . mb_strtolower($this->getClassName()) . '/' . $view . '.php';
+            $view_path = 'app/views/' . Helper::contollerFolderName(mb_strtolower($this->getClassName())) . '/' . $view . '.php';
         }
-        if ($data) {
-            extract($data);
-        }
-        if ($template !== 'default') {
-            include 'app/views/templates/' . $template . '.php';
+
+        if (file_exists($view_path)) {
+            if ($data) {
+                extract($data);
+            }
+            ob_start();
+            require $view_path;
+            $content = ob_get_clean();
+            require 'app/views/layouts/' . $this->layout . '.php';
         } else {
-            include 'app/views/templates/default.php';
+            echo 'View not found';
         }
     }
 
@@ -32,12 +37,12 @@ class Controller {
         if (mb_strpos($view, '/')) {
             $view = 'app/views/' . $view . '.php';
         } else {
-            $view = 'app/views/' . $this->getClassName() . '/' . $view . '.php';
+            $view = 'app/views/' . Helper::contollerFolderName(mb_strtolower($this->getClassName())) . '/' . $view . '.php';
         }
         if ($data) {
             extract($data);
         }
-        include $view;
+        require $view;
     }
 
     public function getClassName() {
@@ -48,5 +53,5 @@ class Controller {
     public function createUrl($url) {
         return '//' . $_SERVER['HTTP_HOST'] . '/' . $url;
     }
-    
+
 }

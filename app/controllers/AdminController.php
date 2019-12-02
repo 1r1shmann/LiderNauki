@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 
-class Admin extends Controller {
+class AdminController extends Controller {
 
     public function actionIndex() {
         $this->render('index');

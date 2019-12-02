@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <title>Ассоциация "Лидер науки"</title>
+        <title><?= $str_title ?> | Ассоциация "Лидер науки"</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,7 +41,7 @@
           </form>
         </div>
       </nav>
-        <?php include $view; ?>
+        <?= $content; ?>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

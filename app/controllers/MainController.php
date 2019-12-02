@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 
-class Contacts extends Controller {
+class MainController extends Controller {
 
     public function actionIndex() {
         $this->render('index');
     }
-
+    
 }
