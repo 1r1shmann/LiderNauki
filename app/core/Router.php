@@ -14,24 +14,24 @@ namespace App\Core;
  * @author control
  */
 class Router {
+
     public $controller = 'Main';
     public $action = 'Index';
     public $id = NULL;
-            
-    
+
     function __construct($url) {
         $url = $url;
         $url = rtrim($url, '/');
         $url = explode('/', $url);
-        
+
         $this->controller = $url[0] ? ucfirst($url[0]) : $this->controller;
         $this->controller = '\App\Controllers\\' . $this->controller . 'Controller';
-        
+
         $this->action = $url[1] ? $url[1] : $this->action;
         $this->action = 'action' . $this->action;
-        
+
         $this->id = $url[2] ? $url[2] : $this->id;
-        
+
         if (class_exists($this->controller)) {
             $controller = new $this->controller;
             if (method_exists($this->controller, $this->action)) {
@@ -50,4 +50,5 @@ class Router {
             $error->action404();
         }
     }
+
 }

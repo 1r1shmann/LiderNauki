@@ -8,7 +8,7 @@ class TestController extends Controller {
 
     public function actionIndex($id = null) {
         var_dump($id);
-//        $this->render('index');
+        $this->render('index');
     }
 
 }

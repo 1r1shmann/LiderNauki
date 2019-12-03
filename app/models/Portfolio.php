@@ -7,7 +7,6 @@ class Portfolio extends \App\Core\Model {
     public function get_data() {
 
         // Здесь мы просто сэмулируем реальные данные.
-
         return array(
             array(
                 'Year' => '2012',

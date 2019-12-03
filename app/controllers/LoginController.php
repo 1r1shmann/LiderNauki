@@ -21,7 +21,6 @@ class LoginController extends Controller {
             if ($login == "admin" && $password == "12345") {
                 $data["login_status"] = "access_granted";
 
-                session_start();
                 $_SESSION['admin'] = $password;
                 header('Location:/admin');
             } else {

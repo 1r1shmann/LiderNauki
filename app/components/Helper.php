@@ -14,8 +14,9 @@ namespace App\Components;
  * @author control
  */
 class Helper {
-    
-    public static function contollerFolderName($controllerName){
+
+    public static function contollerFolderName($controllerName) {
         return str_ireplace('controller', '', $controllerName);
     }
+
 }
