@@ -13,7 +13,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="<?= $this->createUrl('images/favicon.png') ?>">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark justify-content-end">
+        <nav class="navbar navbar-expand-lg fixed-top justify-content-end">
             <div class="container">
                 <a class="navbar-brand mr-auto mr-lg-0" href="#">Navbar</a>
                 <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
@@ -21,34 +21,7 @@
                 </button>
 
                 <div class=" offcanvas-collapse justify-content-md-center" >
-                    <ul class="navbar-nav mr-auto ">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Главная</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/services">Услуги</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/portfolio">Портфолио</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contacts">Контакты</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li> 
-                        <li class="nav-item">
-                            <form class="form-inline" action="/portfolio" method="GET">
-                                <input class="form-control mr-sm-2" name="asd" type="text" placeholder="Введите запрос..." aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
-                            </form>
-                        </li>
-                    </ul>
+                    <?php $this->renderPartial('layouts/_menu'); ?>
                 </div>
             </div>
         </nav>

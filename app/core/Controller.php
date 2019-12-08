@@ -33,16 +33,21 @@ class Controller {
         }
     }
 
-    public function renderPartial($view, $data = [], $template = 'default') {
+    public function renderPartial($view, $data = []) {
         if (mb_strpos($view, '/')) {
-            $view = 'app/views/' . $view . '.php';
+            $view_path = 'app/views/' . $view . '.php';
         } else {
-            $view = 'app/views/' . Helper::contollerFolderName(mb_strtolower($this->getClassName())) . '/' . $view . '.php';
+            $view_path = 'app/views/' . Helper::contollerFolderName(mb_strtolower($this->getClassName())) . '/' . $view . '.php';
         }
-        if ($data) {
-            extract($data);
+
+        if (file_exists($view_path)) {
+            if ($data) {
+                extract($data);
+            }
+            require $view_path;
+        } else {
+            echo 'View not found';
         }
-        require $view;
     }
 
     public function getClassName() {

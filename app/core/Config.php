@@ -13,7 +13,7 @@ class Config {
         ],
         'events' => [
             'title' => 'Мероприятия',
-            'url' => '',
+            'url' => 'portfolio',
             'position' => 2,
             'auth_required' => false,
         ],
@@ -25,13 +25,13 @@ class Config {
         ],
         'help' => [
             'title' => 'Помощь',
-            'url' => '',
+            'url' => 'services',
             'position' => 4,
             'auth_required' => false,
         ],
         'contacts' => [
             'title' => 'Контакты',
-            'url' => '',
+            'url' => 'contacts',
             'position' => 5,
             'auth_required' => false,
         ],
@@ -48,7 +48,7 @@ class Config {
             'auth_required' => false,
         ],
         'profile' => [
-            'title' => '',
+            'title' => 'Профиль',
             'url' => '#',
             'position' => 8,
             'auth_required' => true,
