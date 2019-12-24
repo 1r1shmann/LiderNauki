@@ -8,7 +8,7 @@ body {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 70px;
   margin-bottom: 65px;
 }
 
@@ -173,4 +173,14 @@ body {
           transform: translate3d(0, 0, 0);
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+.hide{
+    display: none;
+}
+.row {
+    margin-bottom: 10px;
+}
+button {
+    background-color: #f00;
 }

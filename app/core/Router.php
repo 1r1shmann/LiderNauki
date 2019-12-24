@@ -19,7 +19,7 @@ class Router {
     public $action = 'Index';
     public $id = NULL;
 
-    function __construct($url) {
+    function __construct($url, $config) {
         $url = explode('/', rtrim($url, '/'));
         
         $this->controller = isset($url[0]) && $url[0] != '' ? ucfirst($url[0]) : $this->controller;
@@ -30,7 +30,7 @@ class Router {
         $this->action = 'action' . $this->action;
 
         if (class_exists($this->controller)) {
-            $controller = new $this->controller;
+            $controller = new $this->controller($config);
             if (method_exists($this->controller, $this->action)) {
 
                 if ($this->id) {

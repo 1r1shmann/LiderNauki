@@ -5,6 +5,6 @@
         }
     },
     "require": {
-        "gabordemooij/redbean": "v5.4"
+        "php-activerecord/php-activerecord": "dev-master"
     }
 }

@@ -9,8 +9,8 @@ class Controller {
     public $config;
     public $layout = 'default';
 
-    public function __construct() {
-        $this->config = new Config();
+    public function __construct($config) {
+        $this->config = (object)$config;
     }
 
     public function render($view, $data = []) {
@@ -58,5 +58,8 @@ class Controller {
     public function createUrl($url) {
         return '//' . $_SERVER['HTTP_HOST'] . '/' . $url;
     }
-
+    
+    public function redirect($url){
+        header('Location: ' . $this->createUrl($url));
+    }
 }

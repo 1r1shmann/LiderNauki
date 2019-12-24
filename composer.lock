@@ -4,54 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4767e2569ff4477577812a8b9b6962dc",
+    "content-hash": "dd111fa463f345cf67af0598381c7df1",
     "packages": [
         {
-            "name": "gabordemooij/redbean",
-            "version": "v5.4",
+            "name": "php-activerecord/php-activerecord",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/gabordemooij/redbean.git",
-                "reference": "931e4fa3d957a29fa2f67c543255f9fc1603fe0e"
+                "url": "https://github.com/jpfuentes2/php-activerecord.git",
+                "reference": "d9a4130adbef8f5446cbdcc96b42b8204e3da5b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gabordemooij/redbean/zipball/931e4fa3d957a29fa2f67c543255f9fc1603fe0e",
-                "reference": "931e4fa3d957a29fa2f67c543255f9fc1603fe0e",
+                "url": "https://api.github.com/repos/jpfuentes2/php-activerecord/zipball/d9a4130adbef8f5446cbdcc96b42b8204e3da5b4",
+                "reference": "d9a4130adbef8f5446cbdcc96b42b8204e3da5b4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.4"
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "pear/log": "~1.12",
+                "pear/pear_exception": "1.0-beta1",
+                "phpunit/phpunit": "4.*"
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "RedBeanPHP\\": "RedBeanPHP"
-                }
+                "files": [
+                    "ActiveRecord.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Gabor de Mooij",
-                    "email": "gabor@redbeanphp.com",
-                    "homepage": "https://redbeanphp.com"
-                }
-            ],
-            "description": "RedBeanPHP ORM",
-            "homepage": "https://redbeanphp.com/",
+            "description": "php-activerecord is an open source ORM library based on the ActiveRecord pattern.",
+            "homepage": "http://www.phpactiverecord.org/",
             "keywords": [
+                "activerecord",
                 "orm"
             ],
-            "time": "2019-09-24T20:36:43+00:00"
+            "time": "2017-06-19T20:32:00+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "php-activerecord/php-activerecord": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

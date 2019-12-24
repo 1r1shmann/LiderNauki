@@ -38,7 +38,7 @@
             </ul>
         </footer>
         <!-- Optional JavaScript -->
-        <script type="text/javascript" src="<?= $this->createUrl('js/jquery-3.3.1.slim.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->createUrl('js/jquery-3.4.1.min.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->createUrl('js/popper.min.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->createUrl('js/bootstrap.min.js') ?>"></script>
         <script type="text/javascript">
