@@ -23,7 +23,8 @@
                     echo '<a class="nav-link dropdown-toggle" href="', $item['url'],'" id="', $key,'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">', $item['title'],'</a>';
                     echo '<div class="dropdown-menu" aria-labelledby="', $key,'">';
                     foreach ($item['sub'] as $subkey => $subitem){
-                        echo '<a class="dropdown-item" href="/', $subitem['url'],'">', $subitem['title'],'</a>';
+                        $subactive = ($url === $subitem['url']) ? ' active' : '';
+                        echo '<a class="dropdown-item ', $subactive,'" href="/', $subitem['url'],'">', $subitem['title'],'</a>';
                     }
                     echo '</div>';
                 }

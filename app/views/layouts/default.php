@@ -15,7 +15,7 @@
     <body>
         <nav class="navbar navbar-expand-lg fixed-top justify-content-end">
             <div class="container">
-                <a class="navbar-brand mr-auto mr-lg-0" href="#">Navbar</a>
+                <a class="navbar-brand mr-auto mr-lg-0" href="/">LiderNauki</a>
                 <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
                     <span class="navbar-toggler-icon"></span>
                 </button>

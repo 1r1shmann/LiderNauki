@@ -1,6 +1,7 @@
 <?php
 
     return [
+        'DATETIME_FORMAT' => 'Y-m-d H:i:s',
         'db' => [
             'development' => 'mysql://root:@localhost/mvcapp',
             'production' => 'mysql://root:@localhost/mvcapp',
@@ -14,25 +15,25 @@
             ],
             'events' => [
                 'title' => 'Мероприятия',
-                'url' => '',
+                'url' => 'events',
                 'position' => 2,
                 'visibility' => ['auth', 'nonauth'],
             ],
             'news' => [
                 'title' => 'Новости',
-                'url' => '',
+                'url' => 'news',
                 'position' => 3,
                 'visibility' => ['auth', 'nonauth'],
             ],
             'help' => [
                 'title' => 'Помощь',
-                'url' => '',
+                'url' => 'help',
                 'position' => 4,
                 'visibility' => ['auth', 'nonauth'],
             ],
             'contacts' => [
                 'title' => 'Контакты',
-                'url' => '',
+                'url' => 'contacts',
                 'position' => 5,
                 'visibility' => ['auth', 'nonauth'],
             ],
@@ -44,55 +45,55 @@
             ],
             'signup' => [
                 'title' => 'Регистрация',
-                'url' => '',
+                'url' => 'main/registration',
                 'position' => 7,
                 'visibility' => ['nonauth'],
             ],
             'profile' => [
                 'title' => 'Профиль',
-                'url' => 'user',
+                'url' => '',
                 'position' => 8,
                 'visibility' => ['auth'],
                 'sub' => [
                     'person_data' => [
-                        'title' => 'Личные кабинет',
+                        'title' => 'Личный кабинет',
                         'url' => 'user',
                         'position' => 1,
                         'visibility' => ['auth'],
                     ],
                     'results' => [
                         'title' => 'Итоги',
-                        'url' => '',
+                        'url' => 'results',
                         'position' => 2,
                         'visibility' => ['auth'],
                     ],
                     'orders' => [
                         'title' => 'Заявки',
-                        'url' => '',
+                        'url' => 'orders',
                         'position' => 3,
                         'visibility' => ['auth'],
                     ],
                     'institution' => [
                         'title' => 'Учреждения',
-                        'url' => '',
+                        'url' => 'institutions',
                         'position' => 4,
                         'visibility' => ['auth'],
                     ],
                     'teachers' => [
                         'title' => 'Преподаватели',
-                        'url' => '',
+                        'url' => 'teachers',
                         'position' => 5,
                         'visibility' => ['auth'],
                     ],
                     'members' => [
                         'title' => 'Участники',
-                        'url' => '',
+                        'url' => 'members',
                         'position' => 6,
                         'visibility' => ['auth'],
                     ],
                     'logout' => [
                         'title' => 'Выход',
-                        'url' => '',
+                        'url' => 'main/logout',
                         'position' => 7,
                         'visibility' => ['auth'],
                     ],

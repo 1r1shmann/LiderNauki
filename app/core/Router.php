@@ -39,11 +39,11 @@ class Router {
                     $controller->{$this->action}();
                 }
             } else {
-                $error = new \App\Controllers\ErrorController();
+                $error = new \App\Controllers\ErrorController($config);
                 $error->action404();
             }
         } else {
-            $error = new \App\Controllers\ErrorController();
+            $error = new \App\Controllers\ErrorController($config);
             $error->action404();
         }
     }

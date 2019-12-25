@@ -6,19 +6,19 @@ $str_title = 'Главная';
         <div class="col-lg-6">
             <form action="#" method="POST" id="loginForm">
                 <div class="form-group">
-                    <label for="login">Логин</label>
-                    <input type="text" name="login" class="form-control" id="login" placeholder="Введите логин">
+                    <label for="email">E-mail:</label>
+                    <input required="true" type="email" name="email" class="form-control" id="email" placeholder="Введите E-mail ...">
                 </div>
                 <div class="form-group">
-                    <label for="password">Пароль</label>
-                    <input type="password" name="password" class="form-control" id="password" placeholder="Введите пароль">
+                    <label for="password">Пароль:</label>
+                    <input required="true" type="password" name="password" class="form-control" id="password" placeholder="Введите пароль ...">
                 </div>
                 <div class="form-group form-check">
                     <input name="remember" type="checkbox" class="form-check-input" id="remember">
                     <label class="form-check-label" for="remember">Запомнить меня</label>
                 </div>
                 <div class="row error_block hide">
-                    <div class="col-12 alert-danger error_text">
+                    <div class="col-12 alert-danger error_text border border-danger">
                         
                     </div>
                 </div>
@@ -40,6 +40,7 @@ $str_title = 'Главная';
         $('#loginSubmit').attr('disabled', true);
         $('#loginLoader').show();
         
+        
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
@@ -47,7 +48,6 @@ $str_title = 'Главная';
             url: '<?= $this->createUrl('main/ajaxLogin') ?>',
             success: function(data){
                 if(data['status'] !== 'success'){
-                    /*error*/
                     $('.error_text').html(data['msg']);
                     $('.error_block').slideDown('fast', function() {$('.error_block').fadeTo(600, 0.2, function() {$('.error_block').fadeTo(600, 1);});});
                     $('#loginSubmit').attr('disabled', false);
