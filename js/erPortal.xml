@@ -1,0 +1,2031 @@
+<?xml version='1.0' encoding='UTF-8'?><definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:m="http://www.rt-eu.ru/med/er/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="ErSoapService" targetNamespace="http://www.rt-eu.ru/med/er/">
+  <types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:m="http://www.rt-eu.ru/med/er/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.rt-eu.ru/med/er/" version="1.0">
+            
+  <xs:simpleType name="guid">
+                
+    <xs:annotation>
+                    
+      <xs:documentation xml:lang="en">
+                        The representation of a GUID, generally the id of an element.
+                    </xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:restriction base="xs:string">
+                    
+      <xs:pattern value="\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}"/>
+                
+    </xs:restriction>
+            
+  </xs:simpleType>
+            
+  <xs:element name="GetPatientInfoRequest">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Идентификация пациента</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Patient_Data" type="m:Patient_Data">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Информация по анализу</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetMoInfoRequest">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Получение списка МО, доступных пользователю для записи</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetMoInfoResponse">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Список МО, доступных пользователю для записи</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="ListMO">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Список МО</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="MO">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Список МО</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="MO_Id" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Идентификатор МО\подразделения
+                                                        </xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="MO_Name" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Наименование МО</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="MO_Address" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Адрес МО</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="0" name="MO_Phone" nillable="true" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Контактный телефон МО (регистратура)
+                                                        </xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="0" name="Error" nillable="true">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Ошибка</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="1" minOccurs="1" name="errorDetail" nillable="false">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Информация об ошибке</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element name="errorCode">
+                                                    
+                      <xs:simpleType>
+                                                        
+                        <xs:restriction base="xs:int">
+                                                            
+                          <xs:enumeration value="0">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>ОК</xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="1">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>по запросу данных не найдено
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="2">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>внутренняя ошибка системы
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="3">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>истекло время ожидания сессии
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                        
+                        </xs:restriction>
+                                                    
+                      </xs:simpleType>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="errorMessage" nillable="false" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Текстовое описание ошибки</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetMOInfoExtendedRequest">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Получение списка МО, доступных пользователю для записи</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetMOInfoExtendedResponse">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Список МО, доступных пользователю для записи</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="ListMO">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Список МО</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="MO">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Список МО</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="MO_Id" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Идентификатор МО\подразделения
+                                                        </xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="MO_OID" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Единый уникальный идентификатор медицинской
+                                                            организации (OID)
+                                                        </xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="MO_Name" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Наименование МО</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="MO_Address" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Адрес МО</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="0" name="MO_Phone" nillable="true" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Контактный телефон МО (регистратура)
+                                                        </xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="0" name="Error" nillable="true">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Ошибка</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="1" minOccurs="1" name="errorDetail" nillable="false">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Информация об ошибке</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element name="errorCode">
+                                                    
+                      <xs:simpleType>
+                                                        
+                        <xs:restriction base="xs:int">
+                                                            
+                          <xs:enumeration value="0">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>ОК</xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="1">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>по запросу данных не найдено
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="2">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>внутренняя ошибка системы
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="3">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>истекло время ожидания сессии
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                        
+                        </xs:restriction>
+                                                    
+                      </xs:simpleType>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="errorMessage" nillable="false" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Текстовое описание ошибки</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetServiceSpecsInfoResponse">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Список МО, доступных пользователю для записи</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="ListServiceSpecs">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Список специальностей или услуг</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceSpec">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Параметры специальности или услуги</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="ServiceSpec_Id" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Идентификатор специальности или услуги
+                                                        </xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="ServiceSpec_Name" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Наименование специальности или услуги
+                                                        </xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="0" name="Error" nillable="true">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Ошибка</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="1" minOccurs="1" name="errorDetail" nillable="false">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Информация об ошибке</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element name="errorCode">
+                                                    
+                      <xs:simpleType>
+                                                        
+                        <xs:restriction base="xs:int">
+                                                            
+                          <xs:enumeration value="0">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>ОК</xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="1">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>по запросу данных не найдено
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="2">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>внутренняя ошибка системы
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="3">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>истекло время ожидания сессии
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                        
+                        </xs:restriction>
+                                                    
+                      </xs:simpleType>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="errorMessage" nillable="false" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Текстовое описание ошибки</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetResourceInfoResponse">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Список доступных для пациента ресурсов выбранной ранее медицинской специальности
+                        или услуги
+                    </xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="ListResource">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Список ресурсов</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="Resource">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Параметры ресурса</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="Resource_Id" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Идентификатор ресурса</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="Resource_Name" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Наименование ресурса</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="0" name="Error" nillable="true">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Ошибка</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="1" minOccurs="1" name="errorDetail" nillable="false">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Информация об ошибке</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element name="errorCode">
+                                                    
+                      <xs:simpleType>
+                                                        
+                        <xs:restriction base="xs:int">
+                                                            
+                          <xs:enumeration value="0">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>ОК</xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="1">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>по запросу данных не найдено
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="2">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>внутренняя ошибка системы
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="3">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>истекло время ожидания сессии
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                        
+                        </xs:restriction>
+                                                    
+                      </xs:simpleType>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="errorMessage" nillable="false" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Текстовое описание ошибки</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetScheduleInfoResponse">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Расписание приема и свободного времени для записи на прием выбранного ресурса
+                    </xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Schedule">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Расписание ресурса</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="Slots">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Параметры слотов</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="Slot_Id" type="m:guid">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Идентификатор слота</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="VisitTime" type="xs:dateTime">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Дата и Время приема</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="0" name="Error" nillable="true">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Ошибка</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="1" minOccurs="1" name="errorDetail" nillable="false">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Информация об ошибке</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element name="errorCode">
+                                                    
+                      <xs:simpleType>
+                                                        
+                        <xs:restriction base="xs:int">
+                                                            
+                          <xs:enumeration value="0">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>ОК</xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="1">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>по запросу данных не найдено
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="2">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>внутренняя ошибка системы
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="3">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>истекло время ожидания сессии
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                        
+                        </xs:restriction>
+                                                    
+                      </xs:simpleType>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="errorMessage" nillable="false" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Текстовое описание ошибки</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="CreateAppointmentResponse">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Результат создания записи на прием к врачу</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Book_Id_Mis" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор записи на прием в РМИС</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element name="Status_Code">
+                            
+          <xs:simpleType>
+                                
+            <xs:restriction base="xs:int">
+                                    
+              <xs:enumeration value="0">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>ОК</xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="1">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Ошибка</xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="2">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Отказ. Время занято</xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="3">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Пациент уже записан к данному специалисту на указанную
+                                                услугу в этот день
+                                            </xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="4">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Услуга не оказывается посмертно</xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="5">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Пациент уже записан на это время к другому специалисту
+                                            </xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="6">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Выбранное время доступно для записи пациентов в
+                                                определенном возрасте. Ограничение на возраст.
+                                            </xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="7">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Время начала приема уже прошло.</xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                
+            </xs:restriction>
+                            
+          </xs:simpleType>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Comment" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Состояние статуса записи</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Slot_Id" type="m:guid">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор слота</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="VisitTime" type="xs:dateTime">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Дата и Время приема</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="CancelAppointmentResponse">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Результат отмены записи на прием к врачу</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Book_Id_Mis" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор записи на прием в РМИС</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element name="Status_Code">
+                            
+          <xs:simpleType>
+                                
+            <xs:restriction base="xs:int">
+                                    
+              <xs:enumeration value="0">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>ОК</xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="1">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>ошибка</xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                    
+              <xs:enumeration value="2">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>отказ</xs:documentation>
+                                        
+                </xs:annotation>
+                                    
+              </xs:enumeration>
+                                
+            </xs:restriction>
+                            
+          </xs:simpleType>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Comment" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Состояние статуса отмены</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetServiceSpecsInfoRequest">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Запрос на получение списка профилей услуг, оказываемых в выбранной МО
+                    </xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="MO_Id" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор МО</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetResourceInfoRequest">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Запрос на получение ресурсов по выбранному профилю</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="ServiceSpec_Id" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор выбранной специальности или услуги</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="GetScheduleInfoRequest">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Запрос на получение графика работы выбранного ресурса</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Resource_Id" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор ресурса</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="StartDateRange" type="xs:date">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Дата, с которой необходимо начать формировать расписание
+                                </xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="EndDateRange" type="xs:date">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Дата, по которую необходимо формировать расписание</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="StartTimeRange" type="xs:time">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Время, с которого необходимо формировать расписание</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="EndTimeRange" type="xs:time">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Время, по которое необходимо формировать расписание</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="CreateAppointmentRequest">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Запрос на запись пользователя на прием</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Slot_Id" type="m:guid">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор слота</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:element name="CancelAppointmentRequest">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Запрос на отмену записи пользователя на прием</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Book_Id_Mis" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор записи на прием в РМИС</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+            
+  <xs:complexType name="Patient_Data">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Личные данные пациента</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:sequence>
+                    
+      <xs:element maxOccurs="1" minOccurs="1" name="OMS_Number" nillable="false" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>Номер полиса ОМС пациента</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="0" name="OMS_Series" nillable="true" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>Серия полиса ОМС пациента</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="0" name="SNILS" nillable="true" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>СНИЛС пациента</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="0" name="First_Name" nillable="true" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>Имя пациента</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="0" name="Last_Name" nillable="true" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>Фамилия пациента</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="0" name="Middle_Name" nillable="true" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>Отчество пациента</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="1" name="Birth_Date" nillable="false" type="xs:date">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>stub</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="0" name="Sex" nillable="true" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>Пол пациента</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="0" name="Email" nillable="true" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>e-mail адрес заявителя</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                    
+      <xs:element maxOccurs="1" minOccurs="0" name="Phone" nillable="true" type="xs:string">
+                        
+        <xs:annotation>
+                            
+          <xs:documentation>Телефон заявителя</xs:documentation>
+                        
+        </xs:annotation>
+                    
+      </xs:element>
+                
+    </xs:sequence>
+            
+  </xs:complexType>
+            
+  <xs:element name="GetPatientInfoResponse">
+                
+    <xs:annotation>
+                    
+      <xs:documentation>Результат идентификации пациента</xs:documentation>
+                
+    </xs:annotation>
+                
+    <xs:complexType>
+                    
+      <xs:sequence>
+                        
+        <xs:element maxOccurs="1" minOccurs="1" name="Session_ID" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор сессии</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="0" name="Patient_Id" nillable="true" type="xs:string">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Идентификатор пациента в РМИС</xs:documentation>
+                            
+          </xs:annotation>
+                        
+        </xs:element>
+                        
+        <xs:element maxOccurs="1" minOccurs="0" name="Error" nillable="true">
+                            
+          <xs:annotation>
+                                
+            <xs:documentation>Ошибка</xs:documentation>
+                            
+          </xs:annotation>
+                            
+          <xs:complexType>
+                                
+            <xs:sequence>
+                                    
+              <xs:element maxOccurs="1" minOccurs="1" name="errorDetail" nillable="false">
+                                        
+                <xs:annotation>
+                                            
+                  <xs:documentation>Информация об ошибке</xs:documentation>
+                                        
+                </xs:annotation>
+                                        
+                <xs:complexType>
+                                            
+                  <xs:sequence>
+                                                
+                    <xs:element name="errorCode">
+                                                    
+                      <xs:simpleType>
+                                                        
+                        <xs:restriction base="xs:int">
+                                                            
+                          <xs:enumeration value="0">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>ОК</xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="1">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>по запросу данных не найдено
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="2">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>внутренняя ошибка системы
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="3">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>истекло время ожидания сессии
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                            
+                          <xs:enumeration value="4">
+                                                                
+                            <xs:annotation>
+                                                                    
+                              <xs:documentation>найдено более одного пациента с
+                                                                        таким данными
+                                                                    </xs:documentation>
+                                                                
+                            </xs:annotation>
+                                                            
+                          </xs:enumeration>
+                                                        
+                        </xs:restriction>
+                                                    
+                      </xs:simpleType>
+                                                
+                    </xs:element>
+                                                
+                    <xs:element maxOccurs="1" minOccurs="1" name="errorMessage" nillable="false" type="xs:string">
+                                                    
+                      <xs:annotation>
+                                                        
+                        <xs:documentation>Текстовое описание ошибки</xs:documentation>
+                                                    
+                      </xs:annotation>
+                                                
+                    </xs:element>
+                                            
+                  </xs:sequence>
+                                        
+                </xs:complexType>
+                                    
+              </xs:element>
+                                
+            </xs:sequence>
+                            
+          </xs:complexType>
+                        
+        </xs:element>
+                    
+      </xs:sequence>
+                
+    </xs:complexType>
+            
+  </xs:element>
+        
+</xs:schema>
+  </types>
+  <message name="GetPatientInfo">
+    <part element="m:GetPatientInfoRequest" name="parameter">
+    </part>
+  </message>
+  <message name="CancelAppointmentResponse">
+    <part element="m:CancelAppointmentResponse" name="parameter">
+    </part>
+  </message>
+  <message name="GetScheduleInfoResponse">
+    <part element="m:GetScheduleInfoResponse" name="parameter">
+    </part>
+  </message>
+  <message name="GetMOInfoExtendedResponse">
+    <part element="m:GetMOInfoExtendedResponse" name="parameter">
+    </part>
+  </message>
+  <message name="GetServiceSpecsInfoResponse">
+    <part element="m:GetServiceSpecsInfoResponse" name="parameter">
+    </part>
+  </message>
+  <message name="CreateAppointment">
+    <part element="m:CreateAppointmentRequest" name="parameter">
+    </part>
+  </message>
+  <message name="GetPatientInfoResponse">
+    <part element="m:GetPatientInfoResponse" name="parameter">
+    </part>
+  </message>
+  <message name="GetScheduleInfo">
+    <part element="m:GetScheduleInfoRequest" name="parameter">
+    </part>
+  </message>
+  <message name="GetServiceSpecsInfo">
+    <part element="m:GetServiceSpecsInfoRequest" name="parameter">
+    </part>
+  </message>
+  <message name="GetResourceInfo">
+    <part element="m:GetResourceInfoRequest" name="parameter">
+    </part>
+  </message>
+  <message name="GetResourceInfoResponse">
+    <part element="m:GetResourceInfoResponse" name="parameter">
+    </part>
+  </message>
+  <message name="CreateAppointmentResponse">
+    <part element="m:CreateAppointmentResponse" name="parameter">
+    </part>
+  </message>
+  <message name="CancelAppointment">
+    <part element="m:CancelAppointmentRequest" name="parameter">
+    </part>
+  </message>
+  <message name="GetMoInfo">
+    <part element="m:GetMoInfoRequest" name="parameter">
+    </part>
+  </message>
+  <message name="GetMoInfoResponse">
+    <part element="m:GetMoInfoResponse" name="parameter">
+    </part>
+  </message>
+  <message name="GetMOInfoExtendedRequest">
+    <part element="m:GetMOInfoExtendedRequest" name="parameter">
+    </part>
+  </message>
+  <portType name="ErWebService">
+    <operation name="GetPatientInfo">
+      <input message="m:GetPatientInfo">
+    </input>
+      <output message="m:GetPatientInfoResponse">
+    </output>
+    </operation>
+    <operation name="GetMOInfo">
+      <input message="m:GetMoInfo">
+    </input>
+      <output message="m:GetMoInfoResponse">
+    </output>
+    </operation>
+    <operation name="GetMOInfoExtended">
+      <input message="m:GetMOInfoExtendedRequest">
+    </input>
+      <output message="m:GetMOInfoExtendedResponse">
+    </output>
+    </operation>
+    <operation name="GetServiceSpecsInfo">
+      <input message="m:GetServiceSpecsInfo">
+    </input>
+      <output message="m:GetServiceSpecsInfoResponse">
+    </output>
+    </operation>
+    <operation name="GetResourceInfo">
+      <input message="m:GetResourceInfo">
+    </input>
+      <output message="m:GetResourceInfoResponse">
+    </output>
+    </operation>
+    <operation name="GetScheduleInfo">
+      <input message="m:GetScheduleInfo">
+    </input>
+      <output message="m:GetScheduleInfoResponse">
+    </output>
+    </operation>
+    <operation name="CreateAppointment">
+      <input message="m:CreateAppointment">
+    </input>
+      <output message="m:CreateAppointmentResponse">
+    </output>
+    </operation>
+    <operation name="CancelAppointment">
+      <input message="m:CancelAppointment">
+    </input>
+      <output message="m:CancelAppointmentResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="ErPortal" type="m:ErWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetPatientInfo">
+      <soap:operation soapAction="GetPatientInfo" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetMOInfo">
+      <soap:operation soapAction="GetMOInfo" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetMOInfoExtended">
+      <soap:operation soapAction="GetMOInfoExtended" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetServiceSpecsInfo">
+      <soap:operation soapAction="GetServiceSpecsInfo" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetResourceInfo">
+      <soap:operation soapAction="GetResourceInfo" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetScheduleInfo">
+      <soap:operation soapAction="GetScheduleInfo" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateAppointment">
+      <soap:operation soapAction="CreateAppointment" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CancelAppointment">
+      <soap:operation soapAction="CancelAppointment" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ErPortal">
+    <port binding="m:ErPortal" name="ErWebService">
+      <soap:address location="http://ibus56.is-mis.ru/fer-ws/erPortal"/>
+    </port>
+  </service>
+</definitions>

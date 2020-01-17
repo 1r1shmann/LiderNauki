@@ -1,7 +1,9 @@
 <?php
 
     return [
-        'DATETIME_FORMAT' => 'Y-m-d H:i:s',
+        'DATETIME_FORMAT' => 'd.m.Y H:i:s',
+        'DATE_FORMAT' => 'd.m.Y',
+        'TIME_FORMAT' => 'H:i:s',
         'db' => [
             'development' => 'mysql://root:@localhost/mvcapp',
             'production' => 'mysql://root:@localhost/mvcapp',
@@ -51,7 +53,7 @@
             ],
             'profile' => [
                 'title' => 'Профиль',
-                'url' => '',
+                'url' => 'profile',
                 'position' => 8,
                 'visibility' => ['auth'],
                 'sub' => [

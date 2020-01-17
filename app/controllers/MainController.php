@@ -30,7 +30,12 @@ class MainController extends Controller {
             if (!password_verify($password, $user->password)) {
                 throw new \Exception('Неверный пароль!');
             }
-            \ActiveRecord\Serialization::$DATETIME_FORMAT = $this->config->DATETIME_FORMAT;
+            
+            if($user->checkAccessRule('auth') !== true){
+                throw new \Exception('Пользователь не имеет права на авторизацию!');
+            }
+            
+            
             $user->last_login_date = date('Y-m-d H:i:s');
             if (!$user->save()) {
                 throw new \Exception('Не удалось авторизовать пользователя!');
