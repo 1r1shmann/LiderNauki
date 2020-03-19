@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Core;
+namespace app\core;
 
-class Model extends \ActiveRecord\Model{
+class Model extends \ActiveRecord\Model {
+
     static $connection = 'production';
+
 }

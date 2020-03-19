@@ -7,10 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/bootstrap.min.css') ?>"  media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/bootstrap-grid.css') ?>"  media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('css/style.css') ?>"  media="screen,projection"/>
-        <link rel="shortcut icon" type="image/x-icon" href="<?= $this->createUrl('images/favicon.png') ?>">
+        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('public/css/bootstrap.min.css') ?>"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('public/css/bootstrap-grid.css') ?>"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('public/css/style.css') ?>"  media="screen,projection"/>
+        <link rel="shortcut icon" type="image/x-icon" href="<?= $this->createUrl('public/images/favicon.png') ?>">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg fixed-top justify-content-end">
@@ -38,9 +38,9 @@
             </ul>
         </footer>
         <!-- Optional JavaScript -->
-        <script type="text/javascript" src="<?= $this->createUrl('js/jquery-3.4.1.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= $this->createUrl('js/popper.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= $this->createUrl('js/bootstrap.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->createUrl('public/js/jquery-3.4.1.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->createUrl('public/js/popper.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->createUrl('public/js/bootstrap.min.js') ?>"></script>
         <script type="text/javascript">
             $(function () {
                 $('[data-toggle="offcanvas"]').on('click', function () {

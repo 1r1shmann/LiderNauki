@@ -23,14 +23,14 @@ $str_title = 'Главная';
                     </div>
                 </div>
                 <div class="float-right">
-                    <img src="<?= $this->createUrl('images/loaders/loader.gif') ?>" id="loginLoader" class="mx-3 hide" style="width: 32px">
+                    <img src="<?= $this->createUrl('public/images/loaders/loader.gif') ?>" id="loginLoader" class="mx-3 hide" style="width: 32px">
                     <button type="submit" id="loginSubmit" class="btn btn-primary">Войти на сайт</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<?= $this->createUrl('js/jquery-3.4.1.min.js') ?>"></script>
+<script type="text/javascript" src="<?= $this->createUrl('public/js/jquery-3.4.1.min.js') ?>"></script>
 <script type="text/javascript">
     $(document).on('submit', '#loginForm', function(event){
         event.preventDefault();

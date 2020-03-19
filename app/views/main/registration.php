@@ -42,14 +42,14 @@
             </div>
             <div class="col-8">
                 <div class="float-right">
-                    <img src="<?= $this->createUrl('images/loaders/loader.gif') ?>" id="regLoader" class="mx-3 hide" style="width: 32px">
+                    <img src="<?= $this->createUrl('public/images/loaders/loader.gif') ?>" id="regLoader" class="mx-3 hide" style="width: 32px">
                     <button type="submit" id="regSubmit" class="btn btn-primary">Зарегистрироваться</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
-<script type="text/javascript" src="<?= $this->createUrl('js/jquery-3.4.1.min.js') ?>"></script>
+<script type="text/javascript" src="<?= $this->createUrl('public/js/jquery-3.4.1.min.js') ?>"></script>
 <script type="text/javascript">
     $(document).on('submit', '#regForm', function(event){
         event.preventDefault();

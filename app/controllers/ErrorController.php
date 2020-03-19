@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace app\controllers;
 
-use App\Core\Controller;
+use app\core\Controller;
 
 class ErrorController extends Controller {
 

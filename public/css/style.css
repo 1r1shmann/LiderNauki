@@ -196,3 +196,21 @@ button {
 .data-row:last-child {
   padding-bottom: 0;
 }
+
+.button_ico {
+    cursor: pointer; 
+    opacity: 0.6;
+}
+
+.button_ico:hover {
+    opacity: 1;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+.text-justify{
+    text-align: justify;
+}

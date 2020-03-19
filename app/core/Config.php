@@ -4,9 +4,10 @@
         'DATETIME_FORMAT' => 'd.m.Y H:i:s',
         'DATE_FORMAT' => 'd.m.Y',
         'TIME_FORMAT' => 'H:i:s',
+        'ROOT_DIR' => '', //путь к корню сайта
         'db' => [
             'development' => 'mysql://root:@localhost/mvcapp',
-            'production' => 'mysql://root:@localhost/mvcapp',
+            'production' => 'mysql://b90969ck_mvc:b90969ck_mvcc@localhost/b90969ck_mvc',
         ],
         'menu' => [
             'home' => [
@@ -29,13 +30,13 @@
             ],
             'help' => [
                 'title' => 'Помощь',
-                'url' => 'help',
+                'url' => 'main/help',
                 'position' => 4,
                 'visibility' => ['auth', 'nonauth'],
             ],
             'contacts' => [
                 'title' => 'Контакты',
-                'url' => 'contacts',
+                'url' => 'main/contacts',
                 'position' => 5,
                 'visibility' => ['auth', 'nonauth'],
             ],
@@ -63,40 +64,22 @@
                         'position' => 1,
                         'visibility' => ['auth'],
                     ],
-                    'results' => [
-                        'title' => 'Итоги',
-                        'url' => 'results',
-                        'position' => 2,
-                        'visibility' => ['auth'],
-                    ],
                     'orders' => [
                         'title' => 'Заявки',
                         'url' => 'orders',
+                        'position' => 2,
+                        'visibility' => ['auth'],
+                    ],
+                    'results' => [
+                        'title' => 'Итоги',
+                        'url' => 'results',
                         'position' => 3,
-                        'visibility' => ['auth'],
-                    ],
-                    'institution' => [
-                        'title' => 'Учреждения',
-                        'url' => 'institutions',
-                        'position' => 4,
-                        'visibility' => ['auth'],
-                    ],
-                    'teachers' => [
-                        'title' => 'Преподаватели',
-                        'url' => 'teachers',
-                        'position' => 5,
-                        'visibility' => ['auth'],
-                    ],
-                    'members' => [
-                        'title' => 'Участники',
-                        'url' => 'members',
-                        'position' => 6,
                         'visibility' => ['auth'],
                     ],
                     'logout' => [
                         'title' => 'Выход',
                         'url' => 'main/logout',
-                        'position' => 7,
+                        'position' => 4,
                         'visibility' => ['auth'],
                     ],
                 ]

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace app\controllers;
 
-use App\Core\Controller;
+use app\core\Controller;
 
 class MainController extends Controller {
 
@@ -21,7 +21,7 @@ class MainController extends Controller {
         $email = $_POST['email'];
         $password = $_POST['password'];
         try {
-            $user = \App\Models\User::find('first', [
+            $user = \app\models\User::find('first', [
                         'conditions' => ['email=?', $email]
             ]);
             if (!$user) {
@@ -74,7 +74,7 @@ class MainController extends Controller {
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
 
-        $user = \App\Models\User::find('first', [
+        $user = \app\models\User::find('first', [
                     'conditions' => ['email=?', $email]
         ]);
         if ($user) {
@@ -113,10 +113,10 @@ class MainController extends Controller {
         $password = $_POST['password'];
 
         try {
-            $user = new \App\Models\User();
-            $user->last_name = \App\Components\Helper::mb_ucfirst(mb_strtolower($last_name));
-            $user->first_name = \App\Components\Helper::mb_ucfirst(mb_strtolower($first_name));
-            $user->middle_name = \App\Components\Helper::mb_ucfirst(mb_strtolower($middle_name));
+            $user = new \app\models\User();
+            $user->last_name = \app\components\Helper::mb_ucfirst(mb_strtolower($last_name));
+            $user->first_name = \app\components\Helper::mb_ucfirst(mb_strtolower($first_name));
+            $user->middle_name = \app\components\Helper::mb_ucfirst(mb_strtolower($middle_name));
             $user->email = $email;
             $user->password = password_hash($password, PASSWORD_DEFAULT);
             $user->last_login_date = date('Y-m-d H:i:s');
@@ -134,4 +134,11 @@ class MainController extends Controller {
         }
     }
 
+    public function actionHelp() {
+        $this->render('help');
+    }
+    
+    public function actionContacts() {
+        $this->render('contacts');
+    }
 }

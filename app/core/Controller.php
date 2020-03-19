@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core;
+namespace app\core;
 
-use App\Components\Helper;
+use app\components\Helper;
 
 class Controller {
 
@@ -56,7 +56,7 @@ class Controller {
     }
 
     public function createUrl($url) {
-        return '//' . $_SERVER['HTTP_HOST'] . '/' . $url;
+        return '//' . $_SERVER['HTTP_HOST'] . ($this->config->ROOT_DIR ? '/'.$this->config->ROOT_DIR : '') . '/' . $url;
     }
     
     public function redirect($url){

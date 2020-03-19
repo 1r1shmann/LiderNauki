@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace App\Core;
+namespace app\core;
 
 /**
  * Description of Router
@@ -26,7 +26,7 @@ class Router {
         $this->action = isset($url[1]) && $url[1] != '' ? $url[1] : $this->action;
         $this->id = isset($url[2]) && $url[2] != '' ? $url[2] : $this->id;
         
-        $this->controller = '\App\Controllers\\' . $this->controller . 'Controller';
+        $this->controller = '\app\controllers\\' . $this->controller . 'Controller';
         $this->action = 'action' . $this->action;
 
         if (class_exists($this->controller)) {
@@ -39,11 +39,11 @@ class Router {
                     $controller->{$this->action}();
                 }
             } else {
-                $error = new \App\Controllers\ErrorController($config);
+                $error = new \app\controllers\ErrorController($config);
                 $error->action404();
             }
         } else {
-            $error = new \App\Controllers\ErrorController($config);
+            $error = new \app\controllers\ErrorController($config);
             $error->action404();
         }
     }

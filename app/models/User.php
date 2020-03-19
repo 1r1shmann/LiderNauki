@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace app\models;
 
-class User extends \App\Core\Model {
+use app\core\Model;
+
+class User extends Model {
 
     static $table_name = 'users';
     static $primary_key = 'id';

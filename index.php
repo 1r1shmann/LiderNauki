@@ -14,9 +14,9 @@
     \ActiveRecord\Config::initialize(function($cfg) use ($config)
     {
         $cfg->set_connections($config['db']);
+        
     });
     
-
-    
     $url = isset($_GET['LNRouter']) ? $_GET['LNRouter'] : '';
-    $router = new App\Core\Router($url, $config);
+    use app\core\Router;
+    $router = new Router($url, $config);
