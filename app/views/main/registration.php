@@ -1,8 +1,8 @@
 <?php
-    $str_title = 'Регистрация';
+$str_title = 'Регистрация';
 ?>
 <div class="container">
-    
+
     <form action="#" method="POST" id="regForm">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-12 col-sm-12">
@@ -36,7 +36,7 @@
             <div class="col-8 error_block hide">
                 <div class="row ">
                     <div class="col-12 alert-danger error_text border border-danger">
-                        
+
                     </div>
                 </div>
             </div>
@@ -51,42 +51,48 @@
 </div>
 <script type="text/javascript" src="<?= $this->createUrl('public/js/jquery-3.4.1.min.js') ?>"></script>
 <script type="text/javascript">
-    $(document).on('submit', '#regForm', function(event){
+    $(document).on('submit', '#regForm', function (event) {
         event.preventDefault();
-        
+
         $('.error_text').html('');
         $('.error_block').slideUp('fast');
         $('#regSubmit').attr('disabled', true);
         $('#regLoader').show();
-        
-        console.log($('#regForm').serialize());
-        
+
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
             data: $('#regForm').serialize(),
             url: '<?= $this->createUrl('main/ajaxRegistrationValidate') ?>',
-            success: function(data){
-                if(data['status'] !== 'success'){
+            success: function (data) {
+                if (data['status'] !== 'success') {
                     var err_txt = '';
-                    for(i in data['msg']){
+                    for (i in data['msg']) {
                         err_txt = err_txt + '<div>• ' + data['msg'][i] + '</div> ';
                     }
                     $('.error_text').html(err_txt);
-                    $('.error_block').slideDown('fast', function() {$('.error_block').fadeTo(600, 0.2, function() {$('.error_block').fadeTo(600, 1);});});
+                    $('.error_block').slideDown('fast', function () {
+                        $('.error_block').fadeTo(600, 0.2, function () {
+                            $('.error_block').fadeTo(600, 1);
+                        });
+                    });
                     $('#regSubmit').attr('disabled', false);
                     $('#regLoader').hide();
-            
+
                 } else {
                     $.ajax({
                         type: 'POST',
                         dataType: 'JSON',
                         data: $('#regForm').serialize(),
                         url: '<?= $this->createUrl('main/ajaxRegistration') ?>',
-                        success: function(data){
-                            if(data['status'] !== 'success'){
+                        success: function (data) {
+                            if (data['status'] !== 'success') {
                                 $('.error_text').html(data['msg']);
-                                $('.error_block').slideDown('fast', function() {$('.error_block').fadeTo(600, 0.2, function() {$('.error_block').fadeTo(600, 1);});});
+                                $('.error_block').slideDown('fast', function () {
+                                    $('.error_block').fadeTo(600, 0.2, function () {
+                                        $('.error_block').fadeTo(600, 1);
+                                    });
+                                });
                                 $('#regSubmit').attr('disabled', false);
                                 $('#regLoader').hide();
 

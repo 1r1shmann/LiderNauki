@@ -3,15 +3,12 @@
 namespace app\core;
 
 use app\components\Helper;
+use app\core\Config;
 
 class Controller {
 
     public $config;
     public $layout = 'default';
-
-    public function __construct($config) {
-        $this->config = (object)$config;
-    }
 
     public function render($view, $data = []) {
         if (mb_strpos($view, '/')) {
@@ -56,10 +53,11 @@ class Controller {
     }
 
     public function createUrl($url) {
-        return '//' . $_SERVER['HTTP_HOST'] . ($this->config->ROOT_DIR ? '/'.$this->config->ROOT_DIR : '') . '/' . $url;
+        return '//' . $_SERVER['HTTP_HOST'] . (Config::ROOT_DIR ? '/' . Config::ROOT_DIR : '') . '/' . $url;
     }
-    
-    public function redirect($url){
+
+    public function redirect($url) {
         header('Location: ' . $this->createUrl($url));
     }
+
 }

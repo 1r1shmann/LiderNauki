@@ -30,17 +30,17 @@ class MainController extends Controller {
             if (!password_verify($password, $user->password)) {
                 throw new \Exception('Неверный пароль!');
             }
-            
-            if($user->checkAccessRule('auth') !== true){
+
+            if ($user->checkAccessRule('auth') !== true) {
                 throw new \Exception('Пользователь не имеет права на авторизацию!');
             }
-            
-            
+
+
             $user->last_login_date = date('Y-m-d H:i:s');
             if (!$user->save()) {
                 throw new \Exception('Не удалось авторизовать пользователя!');
             }
-            
+
             $_SESSION['auth'] = true;
             $_SESSION['user'] = $user->attributes();
             echo json_encode(['status' => 'success', 'msg' => ''], JSON_UNESCAPED_UNICODE);
@@ -86,18 +86,18 @@ class MainController extends Controller {
         if (mb_strlen($password) < 8) {
             $error[] = 'Пароль должен быть больше 7 символов!';
         }
-        
-        if(preg_match('/^[а-яё]{3,}$/iu', $last_name) != true){
+
+        if (preg_match('/^[а-яё]{3,}$/iu', $last_name) != true) {
             $error[] = 'Фамилия должна быть больше 2 символов, разрешена только кириллица!';
         }
-        if(preg_match('/^[а-яё]{3,}$/iu', $first_name) != true){
+        if (preg_match('/^[а-яё]{3,}$/iu', $first_name) != true) {
             $error[] = 'Имя должно быть больше 2 символов, разрешена только кириллица!';
         }
-        if(preg_match('/^[а-яё]{3,}$/iu', $middle_name) != true){
+        if (preg_match('/^[а-яё]{3,}$/iu', $middle_name) != true) {
             $error[] = 'Отчество должно быть больше 2 символов, разрешена только кириллица!';
         }
-        
-        
+
+
         if ($error) {
             echo json_encode(['status' => 'err', 'msg' => $error], JSON_UNESCAPED_UNICODE);
         } else {
@@ -137,8 +137,9 @@ class MainController extends Controller {
     public function actionHelp() {
         $this->render('help');
     }
-    
+
     public function actionContacts() {
         $this->render('contacts');
     }
+
 }

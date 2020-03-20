@@ -1,7 +1,7 @@
 <ul class="navbar-nav mr-auto ">
     <?php
         $url = preg_replace('/^\//', '', preg_replace('/\/$/', '', $_SERVER['REQUEST_URI']));
-        foreach ($this->config->menu as $key => $item) {
+        foreach (app\core\Config::MENU as $key => $item) {
             $active = ($url === $item['url']) ? ' active' : '';
             $hasSub = isset($item['sub']) && is_array($item['sub']);
             $subClass = $hasSub ? 'dropdown' : '';
@@ -18,13 +18,13 @@
             if($visibility_flag){    
             echo '<li class="nav-item ', $subClass, $active,'">';
                 if(!$hasSub){
-                    echo '<a class="nav-link" href="/', ($this->config->ROOT_DIR ? $this->config->ROOT_DIR.'/' : ''), $item['url'],'">', $item['title'],'</a>';
+                    echo '<a class="nav-link" href="/', (app\core\Config::ROOT_DIR ? app\core\Config::ROOT_DIR.'/' : ''), $item['url'],'">', $item['title'],'</a>';
                 } else {
-                    echo '<a class="nav-link dropdown-toggle" href="', ($this->config->ROOT_DIR ? $this->config->ROOT_DIR.'/' : ''), $item['url'],'" id="', $key,'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">', $item['title'],'</a>';
+                    echo '<a class="nav-link dropdown-toggle" href="', (app\core\Config::ROOT_DIR ? app\core\Config::ROOT_DIR.'/' : ''), $item['url'],'" id="', $key,'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">', $item['title'],'</a>';
                     echo '<div class="dropdown-menu" aria-labelledby="', $key,'">';
                     foreach ($item['sub'] as $subkey => $subitem){
                         $subactive = ($url === $subitem['url']) ? ' active' : '';
-                        echo '<a class="dropdown-item ', $subactive,'" href="/', ($this->config->ROOT_DIR ? $this->config->ROOT_DIR.'/' : ''), $subitem['url'],'">', $subitem['title'],'</a>';
+                        echo '<a class="dropdown-item ', $subactive,'" href="/', (app\core\Config::ROOT_DIR ? app\core\Config::ROOT_DIR.'/' : ''), $subitem['url'],'">', $subitem['title'],'</a>';
                     }
                     echo '</div>';
                 }
