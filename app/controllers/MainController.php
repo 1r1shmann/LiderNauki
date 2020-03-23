@@ -32,7 +32,7 @@ class MainController extends Controller {
                 throw new \Exception('Неверный пароль!');
             }
 
-            if ($user->checkAccessRule('auth') !== true) {
+            if ($user->checkAccessRule('basic_auth') !== true) {
                 throw new \Exception('Пользователь не имеет права на авторизацию!');
             }
 
