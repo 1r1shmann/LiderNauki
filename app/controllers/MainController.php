@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\components\Logger;
 
 class MainController extends Controller {
 
@@ -43,8 +44,12 @@ class MainController extends Controller {
 
             $_SESSION['auth'] = true;
             $_SESSION['user'] = $user->attributes();
+            
+            Logger::log('Успешная авторизация.');
+            
             echo json_encode(['status' => 'success', 'msg' => ''], JSON_UNESCAPED_UNICODE);
         } catch (\Exception $ex) {
+            Logger::log('Не удалось авторизоваться. '.$ex->getMessage(), 1);
             echo json_encode(['status' => 'error', 'msg' => $ex->getMessage()], JSON_UNESCAPED_UNICODE);
         }
     }
@@ -53,6 +58,7 @@ class MainController extends Controller {
         if (!isset($_SESSION['auth']) || $_SESSION['auth'] === false) {
             $this->redirect('#');
         }
+        Logger::log('Выход из аккаунта.');
         unset($_SESSION);
         session_destroy();
         $this->redirect('main');
@@ -87,14 +93,14 @@ class MainController extends Controller {
             $error[] = 'Пароль должен быть больше 7 символов!';
         }
 
-        if (preg_match('/^[а-яё]{3,}$/iu', $last_name) != true) {
-            $error[] = 'Фамилия должна быть больше 2 символов, разрешена только кириллица!';
+        if (preg_match('/^[а-яёa-z]{1,}$/iu', $last_name) != true) {
+            $error[] = 'Фамилия должна быть больше 1 символа. (a-я, a-z)!';
         }
-        if (preg_match('/^[а-яё]{3,}$/iu', $first_name) != true) {
-            $error[] = 'Имя должно быть больше 2 символов, разрешена только кириллица!';
+        if (preg_match('/^[а-яёa-z]{1,}$/iu', $first_name) != true) {
+            $error[] = 'Имя должно быть больше 1 символа. (a-я, a-z)!';
         }
-        if (preg_match('/^[а-яё]{3,}$/iu', $middle_name) != true) {
-            $error[] = 'Отчество должно быть больше 2 символов, разрешена только кириллица!';
+        if (preg_match('/^[а-яёa-z]{1,}$/iu', $middle_name) != true) {
+            $error[] = 'Отчество должно быть больше 1 символа. (a-я, a-z)!';
         }
 
 
@@ -128,8 +134,18 @@ class MainController extends Controller {
 
             $_SESSION['auth'] = true;
             $_SESSION['user'] = $user->attributes();
+
+            Logger::log('Успешная регистрация');
+
             echo json_encode(['status' => 'success', 'msg' => ''], JSON_UNESCAPED_UNICODE);
         } catch (\Exception $ex) {
+            $params = [
+                'last_name' => $last_name,
+                'first_name' => $first_name,
+                'middle_name' => $middle_name,
+                'email' => $email
+            ];
+            Logger::log('Ошибка при регистрации! '.$ex->getMessage(), 1);
             echo json_encode(['status' => 'error', 'msg' => $ex->getMessage()], JSON_UNESCAPED_UNICODE);
         }
     }

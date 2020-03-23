@@ -8,11 +8,18 @@
             
             
             $visibility_flag = false;
-            
-            if((isset($_SESSION['auth']) && $_SESSION['auth'] === true) && in_array('auth', $item['visibility'])){
+            if (empty($item['visibility'])){
                 $visibility_flag = true;
-            } elseif((!isset($_SESSION['auth']) || $_SESSION['auth'] === false) && in_array('nonauth', $item['visibility'])){
-                $visibility_flag = true;
+            } else if (isset($_SESSION['auth'])){
+                $user = \app\models\User::find('first', [
+                    'conditions' => ['id=?', $_SESSION['user']['id']]
+                ]);
+                foreach ($item['visibility'] as $vsbl_rule){
+                    if ($user->checkAccessRule($vsbl_rule)){
+                        $visibility_flag = true;
+                        break;
+                    }
+                }
             }
             
             if($visibility_flag){    
@@ -24,7 +31,24 @@
                     echo '<div class="dropdown-menu" aria-labelledby="', $key,'">';
                     foreach ($item['sub'] as $subkey => $subitem){
                         $subactive = ($url === $subitem['url']) ? ' active' : '';
-                        echo '<a class="dropdown-item ', $subactive,'" href="/', (app\core\Config::ROOT_DIR ? app\core\Config::ROOT_DIR.'/' : ''), $subitem['url'],'">', $subitem['title'],'</a>';
+                        $visibility_flag = false;
+                        
+                        if (empty($subitem['visibility'])){
+                            $visibility_flag = true;
+                        } else if (isset($_SESSION['auth'])){
+                            $user = \app\models\User::find('first', [
+                                'conditions' => ['id=?', $_SESSION['user']['id']]
+                            ]);
+                            foreach ($subitem['visibility'] as $vsbl_rule){
+                                if ($user->checkAccessRule($vsbl_rule)){
+                                    $visibility_flag = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if($visibility_flag){
+                            echo '<a class="dropdown-item ', $subactive,'" href="/', (app\core\Config::ROOT_DIR ? app\core\Config::ROOT_DIR.'/' : ''), $subitem['url'],'">', $subitem['title'],'</a>';
+                        }
                     }
                     echo '</div>';
                 }

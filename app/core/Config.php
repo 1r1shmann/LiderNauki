@@ -11,79 +11,77 @@ class Config {
         'development' => 'mysql://root:@localhost/mvcapp',
         'production' => 'mysql://b90969ck_mvc:b90969ck_mvcc@localhost/b90969ck_mvc',
     ];
-    const DB_MODE = "development";
+    const DB_MODE = "production";
     const MENU = [
         'home' => [
             'title' => 'На главную',
             'url' => '',
-            'position' => 1,
-            'visibility' => ['auth', 'nonauth'],
+            'visibility' => [],
         ],
         'events' => [
             'title' => 'Мероприятия',
             'url' => 'events',
-            'position' => 2,
-            'visibility' => ['auth', 'nonauth'],
+            'visibility' => [],
         ],
         'news' => [
             'title' => 'Новости',
             'url' => 'news',
-            'position' => 3,
-            'visibility' => ['auth', 'nonauth'],
+            'visibility' => [],
         ],
         'help' => [
             'title' => 'Помощь',
             'url' => 'main/help',
-            'position' => 4,
-            'visibility' => ['auth', 'nonauth'],
+            'visibility' => [],
         ],
         'contacts' => [
             'title' => 'Контакты',
             'url' => 'main/contacts',
-            'position' => 5,
-            'visibility' => ['auth', 'nonauth'],
+            'visibility' => [],
         ],
         'signin' => [
             'title' => 'Войти',
             'url' => 'main/login',
-            'position' => 6,
-            'visibility' => ['nonauth'],
+            'visibility' => [],
         ],
         'signup' => [
             'title' => 'Регистрация',
             'url' => 'main/registration',
-            'position' => 7,
-            'visibility' => ['nonauth'],
+            'visibility' => [],
         ],
         'profile' => [
             'title' => 'Профиль',
             'url' => 'profile',
-            'position' => 8,
             'visibility' => ['auth'],
             'sub' => [
                 'person_data' => [
                     'title' => 'Личный кабинет',
                     'url' => 'user',
-                    'position' => 1,
-                    'visibility' => ['auth'],
+                    'visibility' => ['basic_auth'],
                 ],
                 'orders' => [
                     'title' => 'Заявки',
                     'url' => 'orders',
-                    'position' => 2,
-                    'visibility' => ['auth'],
+                    'visibility' => ['basic_auth'],
                 ],
                 'results' => [
                     'title' => 'Итоги',
                     'url' => 'results',
-                    'position' => 3,
-                    'visibility' => ['auth'],
+                    'visibility' => ['basic_auth'],
+                ],
+                'settings' => [
+                    'title' => 'Настройки',
+                    'url' => 'user/settings',
+                    'visibility' => ['basic_auth'],
+                ],
+                'admin_panel' => [
+                    'title' => 'Админ-панель',
+                    'url' => 'admin',
+                    'visibility' => ['admin'],
                 ],
                 'logout' => [
                     'title' => 'Выход',
                     'url' => 'main/logout',
-                    'position' => 4,
-                    'visibility' => ['auth'],
+                    'visibility' => ['basic_auth'],
                 ],
             ]
         ]

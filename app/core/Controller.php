@@ -7,7 +7,6 @@ use app\core\Config;
 
 class Controller {
 
-    public $config;
     public $layout = 'default';
 
     public function render($view, $data = []) {

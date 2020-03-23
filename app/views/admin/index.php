@@ -1,14 +1,25 @@
 <?php
-    $str_title = 'Админ панель';
+$str_title = 'Админ-панель';
 ?>
-<h1>Панель администрирования</h1>
-<p>
-    Админка...
-    <!--
-    Пока что, отобразим здесь простой текст.
-    Далее можно добавить в админку некоторый функционал.
-    Например, WYSIWYG-редактор для изменения страниц сайта (видов).
-    Тогда, этот вид будет содержать выпадающий список для выбора страницы, поле редактора, а также кнопку
-    для сохранения изменений. А некоторое действие контроллера администрирования будет описывать логику редактирования страниц.
-    -->
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div id="userDataView">
+                <?php $this->renderPartial('user/_user_data') ?>
+            </div>
+            <div id="userDataEdit" class="hide">
+                <?php $this->renderPartial('user/_user_data_edit') ?>
+            </div>
+            <?php $this->renderPartial('user/_user_educational_institutions') ?>
+        </div>
+        <div class="col-lg-6">
+            <?php $this->renderPartial('user/_user_members') ?>
+            <?php $this->renderPartial('user/_user_mentors') ?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

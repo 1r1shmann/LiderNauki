@@ -98,11 +98,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<?= $this->createUrl('public/js/jquery-3.4.1.min.js') ?>"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
     $(document).on('click', '.deleteMemberButton', function(){
         let memberId = $(this).data('memberid');
         let memberName = $(this).closest('.row').find('.memberName').text().trim();
