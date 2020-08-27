@@ -33,16 +33,13 @@
                 </div>
             </div>
         </nav>
-        
         <?= $content; ?>
-
-        
         <footer class="footer text-muted text-center text-small">
             <div class="mb-0 p-0">© 2014-<?= date('Y') ?> Ассоциация "Лидер Науки"</div>
             <ul class="list-inline mt-0 p-0">
-                <li class="list-inline-item"><a href="#">Конфиденциальность</a></li>
-                <li class="list-inline-item"><a href="#">Правила</a></li>
-                <li class="list-inline-item"><a href="#">Помощь</a></li>
+                <li class="list-inline-item"><a href="<?= $this->createUrl('main/confidentiality') ?>">Конфиденциальность</a></li>
+                <li class="list-inline-item"><a href="<?= $this->createUrl('main/offer') ?>">Договор-оферта</a></li>
+                <li class="list-inline-item"><a href="<?= $this->createUrl('main/help') ?>">Помощь</a></li>
             </ul>
         </footer>
         

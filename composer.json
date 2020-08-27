@@ -5,6 +5,7 @@
         }
     },
     "require": {
-        "php-activerecord/php-activerecord": "dev-master"
+        "php-activerecord/php-activerecord": "dev-master",
+        "phpmailer/phpmailer": "v6.1.7"
 }
 }

@@ -5,7 +5,12 @@ namespace app\components;
 use app\models\Log;
 
 class Logger {
-
+    /**
+     * Пишет в лог
+     * @param string $message string
+     * @param integer $level 1 - Error, 2 - Info, 3 - Debug
+     * @param boolean $request
+     */
     public static function log($message, $level = 2, $request = false) {
         $record = new Log();
         $record->level = $level;

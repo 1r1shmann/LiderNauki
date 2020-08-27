@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\components\Logger;
+use app\components\MailSender;
+use app\components\Helper;
 
 class MainController extends Controller {
 
@@ -44,12 +46,12 @@ class MainController extends Controller {
 
             $_SESSION['auth'] = true;
             $_SESSION['user'] = $user->attributes();
-            
+
             Logger::log('Успешная авторизация.');
-            
+
             echo json_encode(['status' => 'success', 'msg' => ''], JSON_UNESCAPED_UNICODE);
         } catch (\Exception $ex) {
-            Logger::log('Не удалось авторизоваться. '.$ex->getMessage(), 1);
+            Logger::log('Не удалось авторизоваться. ' . $ex->getMessage(), 1);
             echo json_encode(['status' => 'error', 'msg' => $ex->getMessage()], JSON_UNESCAPED_UNICODE);
         }
     }
@@ -131,21 +133,28 @@ class MainController extends Controller {
                 throw new \Exception('Не удалось зарегистрировать пользователя!');
             }
 
-
             $_SESSION['auth'] = true;
             $_SESSION['user'] = $user->attributes();
 
-            Logger::log('Успешная регистрация');
+
+            $mail = new MailSender;
+            $mail->addAddress($email);
+            $mail->Subject = 'Добро пожаловать в Ассоциацию «Лидер науки»';
+
+            $msg = '<h2>Здравствуйте!</h2>
+                    <p>Вы зарегистрировались на сайте <a href="http://'.$_SERVER['HTTP_HOST'].'">Ассоциация «Лидер науки»</a></p>
+                    <p>Ваш пароль: <b>' . $password . '</b></p>';
+            $mail->Body = Helper::createMailBody($msg);
+            if (!$mail->send()) {
+                Logger::log('Ошибка при отправке e-mail. ' . $mail->ErrorInfo, 1);
+            }
+
+
+            Logger::log('Успешная регистрация.');
 
             echo json_encode(['status' => 'success', 'msg' => ''], JSON_UNESCAPED_UNICODE);
         } catch (\Exception $ex) {
-            $params = [
-                'last_name' => $last_name,
-                'first_name' => $first_name,
-                'middle_name' => $middle_name,
-                'email' => $email
-            ];
-            Logger::log('Ошибка при регистрации! '.$ex->getMessage(), 1);
+            Logger::log('Ошибка при регистрации! ' . $ex->getMessage(), 1, true);
             echo json_encode(['status' => 'error', 'msg' => $ex->getMessage()], JSON_UNESCAPED_UNICODE);
         }
     }
@@ -156,6 +165,14 @@ class MainController extends Controller {
 
     public function actionContacts() {
         $this->render('contacts');
+    }
+
+    public function actionOffer() {
+        $this->render('offer');
+    }
+
+    public function actionConfidentiality() {
+        $this->render('confidentiality');
     }
 
 }

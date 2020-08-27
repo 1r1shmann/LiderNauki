@@ -4,17 +4,41 @@ $str_title = 'Админ-панель';
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
-            <div id="userDataView">
-                <?php $this->renderPartial('user/_user_data') ?>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    Новости
+                    <span class="badge badge-primary badge-pill">0</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    Мероприятия
+                    <span class="badge badge-primary badge-pill">0</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    Пользователи
+                    <span class="badge badge-primary badge-pill">0</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    Квитанции
+                    <span class="badge badge-primary badge-pill">0</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    Заявки
+                    <span class="badge badge-primary badge-pill">0</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    Ответы по мероприятиям
+                    <span class="badge badge-primary badge-pill">0</span>
+                </a>
             </div>
-            <div id="userDataEdit" class="hide">
-                <?php $this->renderPartial('user/_user_data_edit') ?>
-            </div>
-            <?php $this->renderPartial('user/_user_educational_institutions') ?>
         </div>
         <div class="col-lg-6">
-            <?php $this->renderPartial('user/_user_members') ?>
-            <?php $this->renderPartial('user/_user_mentors') ?>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+            </div>
         </div>
     </div>
 </div>
