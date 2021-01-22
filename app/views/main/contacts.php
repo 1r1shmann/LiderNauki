@@ -18,7 +18,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a href="tel:+79174494093">+7(917)449-40-93</a>
+                    <a href="tel:+79876543210">+7(987)654-32-10</a>
                 </div>
             </div>
         </div>

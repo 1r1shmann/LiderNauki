@@ -120,7 +120,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon_district">Район:</span>
                         </div>
-                        <input id="eudf_district" name="district" required="true" type="text" class="form-control" aria-describedby="addon_district" value="<?= $_SESSION['user']['district'] ?>">
+                        <input id="eudf_district" name="district" type="text" class="form-control" aria-describedby="addon_district" value="<?= $_SESSION['user']['district'] ?>">
                     </div>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">

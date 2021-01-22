@@ -13,11 +13,11 @@ class Config {
         'production' => 'mysql://id7925547_dizkod:p1a2s3s4Wor-d@localhost/id7925547_dizkod',
     ];
     const DB_MODE = "development";
-    const SMTP_HOST = 'smtp.yandex.ru';
-    const SMTP_LOGIN = 'rammfan1995';
-    const SMTP_PASS = 'rammstein';
+    const SMTP_HOST = 'smtp.mail.ru';
+    const SMTP_LOGIN = 'lidernauki.ru@mail.ru';
+    const SMTP_PASS = 'KdAPOp4opm4]';
     const SMTP_PORT = '465';
-    const SMTP_EMAIL = 'rammfan1995@yandex.ru';
+    const SMTP_EMAIL = 'lidernauki.ru@mail.ru';
     const SMTP_EMAIL_NAME = 'Ассоциация "Лидер Науки"';
     const SMTP_CHARSET = 'UTF-8';
 
@@ -113,6 +113,7 @@ class Config {
                     'title' => 'Выход',
                     'url' => 'main/logout',
                     'visibility' => ['basic_auth'],
+                    'banned' => [],
                 ],
             ]
         ]
