@@ -18,6 +18,10 @@
         <script type="text/javascript" src="<?= $this->createUrl('public/js/bootstrap.min.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->createUrl('public/js/toast.js') ?>"></script>
         
+        <!-- Tabulator -->
+        <link type="text/css" rel="stylesheet" href="<?= $this->createUrl('public/packages/tabulator/css/bootstrap/tabulator_bootstrap4.css') ?>"  media="screen,projection"/>
+        <script type="text/javascript" src="<?= $this->createUrl('public/packages/tabulator/js/tabulator.min.js') ?>"></script>
+        
         <link rel="shortcut icon" type="image/x-icon" href="<?= $this->createUrl('public/images/favicon.png') ?>">
     </head>
     <body>

@@ -1,8 +1,9 @@
 <?php
 
 namespace app\models;
+use app\core\Model;
 
 class School extends Model {
     static $table_name = 'user_schools';
-    static $belongs_to = array('user');
+    static $primary_key = 'id';
 }

@@ -6,6 +6,7 @@ use app\core\Controller;
 use app\components\Logger;
 use app\components\MailSender;
 use app\components\Helper;
+use app\models\User;
 
 class MainController extends Controller {
 
@@ -24,8 +25,8 @@ class MainController extends Controller {
         $email = $_POST['email'];
         $password = $_POST['password'];
         try {
-            $user = \app\models\User::find('first', [
-                        'conditions' => ['email=?', $email]
+            $user = User::find('first', [
+                'conditions' => ['email=?', $email]
             ]);
             if (!$user) {
                 throw new \Exception('Пользователь с таким E-mail не найден!');
@@ -82,7 +83,7 @@ class MainController extends Controller {
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
 
-        $user = \app\models\User::find('first', [
+        $user = User::find('first', [
                     'conditions' => ['email=?', $email]
         ]);
         if ($user) {
@@ -121,10 +122,10 @@ class MainController extends Controller {
         $password = $_POST['password'];
 
         try {
-            $user = new \app\models\User();
-            $user->last_name = \app\components\Helper::mb_ucfirst(mb_strtolower($last_name));
-            $user->first_name = \app\components\Helper::mb_ucfirst(mb_strtolower($first_name));
-            $user->middle_name = \app\components\Helper::mb_ucfirst(mb_strtolower($middle_name));
+            $user = new User();
+            $user->last_name = Helper::mb_ucfirst(mb_strtolower($last_name));
+            $user->first_name = Helper::mb_ucfirst(mb_strtolower($first_name));
+            $user->middle_name = Helper::mb_ucfirst(mb_strtolower($middle_name));
             $user->email = $email;
             $user->password = password_hash($password, PASSWORD_DEFAULT);
             $user->last_login_date = date('Y-m-d H:i:s');
